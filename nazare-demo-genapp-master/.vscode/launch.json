@@ -1,0 +1,22 @@
+{
+   // Use IntelliSense to learn about possible attributes.
+   // Hover to view descriptions of existing attributes.
+   "version": "0.2.0",
+   "configurations": [
+     {
+       "type": "zOpenDebug",
+       "request": "launch",
+       "name": "Connect to parked IBM Z Open Debug session",
+       "useConnectionDetailsFromSettings": true,
+       "password": "${command:AskForPassword}",
+       "ignoreCertificateErrors": true
+    },
+    {        
+     "type": "zOpenDebug",
+     "request": "attach",        
+     "name": "List parked IBM Z Open Debug sessions",        
+     "useConnectionDetailsFromSettings": true,        
+     "ignoreCertificateErrors": true     
+    }
+  ]
+}

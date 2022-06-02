@@ -1,0 +1,69 @@
+{
+  "type" : "object",
+  "properties" : {
+    "LGCMAREA" : {
+      "type" : "object",
+      "properties" : {
+        "CA_REQUEST_ID" : {
+          "maxLength" : 6,
+          "type" : "string",
+          "default" : "01IMOT"
+        },
+        "CustomerNumber" : {
+          "minimum" : 0,
+          "maximum" : 9999999999,
+          "type" : "integer"
+        },
+        "CA_POLICY_REQUEST" : {
+          "type" : "object",
+          "properties" : {
+            "PolicyNumber" : {
+              "minimum" : 0,
+              "maximum" : 9999999999,
+              "type" : "integer"
+            },
+            "CA_POLICY_COMMON" : {
+              "type" : "object",
+              "properties" : {
+                "policyIssueDate" : {
+                  "maxLength" : 10,
+                  "type" : "string"
+                },
+                "policyExpirationDate" : {
+                  "maxLength" : 10,
+                  "type" : "string"
+                }
+              }
+            },
+            "CA_MOTOR" : {
+              "type" : "object",
+              "properties" : {
+                "VehicleMake" : {
+                  "maxLength" : 15,
+                  "type" : "string"
+                },
+                "VehicleModel" : {
+                  "maxLength" : 15,
+                  "type" : "string"
+                },
+                "VehicleRegistration" : {
+                  "maxLength" : 7,
+                  "type" : "string"
+                },
+                "VehicleColour" : {
+                  "maxLength" : 8,
+                  "type" : "string"
+                },
+                "InsurancePremium" : {
+                  "minimum" : 0,
+                  "maximum" : 999999,
+                  "type" : "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+/*******************************************************************************
+ * Licensed Materials - Property of IBM
+ * (C) Copyright IBM Corporation 2020. All Rights Reserved.
+ *
+ * Note to U.S. Government Users Restricted Rights:
+ * Use, duplication or disclosure restricted by GSA ADP Schedule
+ * Contract with IBM Corp.
+ *******************************************************************************/
+{
+    "editor.autoSave": "off",
+    "application.confirmExit": "always",
+    "preview.openByDefault": true,
+    "zopeneditor.propertygroups": [
+        {
+            "name": "Copybooks",
+            "type": "local",
+            "syslib": [
+                "base/src/copy"
+            ]
+        }
+    ],
+    "zopeneditor.userbuild.workspaceSettings": {
+        "dbb": {
+            "command": "$DBB_HOME/bin/groovyz -DBB_DAEMON_PORT 8080 -DBB_DAEMON_HOST 127.0.0.1",
+            "commandArgs": [],
+            "buildScriptPath": "/var/tools/jenkins/workspace/IBMZSoftware/master/nazare-demo-sysadmin/zAppBuild/build.groovy",
+            "buildScriptArgs": [
+                "--userBuild",
+                "--workspace /u/ibmuser/projects",
+                "--application nazare-demo-genapp",
+                "--hlq IBMUSER.GENAPP",
+                "--outDir /u/ibmuser/projects/nazare-demo-genapp/logs"
+            ],
+            "additionalDependencies": [
+                "tests/zunit"
+            ]
+        }
+    },
+    "zopeneditor.userbuild.userSettings": {
+        "dbbWorkspace": "/u/ibmuser/projects"
+    }
+}

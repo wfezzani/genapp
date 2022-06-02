@@ -1,0 +1,183 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "",
+    "version" : "1.0.0",
+    "title" : "motorpolicyapi"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/genapp",
+  "schemes" : [ "https", "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/motorPolicy/{customer_num}/{policy_num}" : {
+      "get" : {
+        "tags" : [ "motorpolicyapi" ],
+        "operationId" : "getMotorPolicyService",
+        "parameters" : [ {
+          "name" : "policy_num",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "customer_num",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "getMotorPolicyService_request",
+          "description" : "request body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/getMotorPolicyService_request"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/getMotorPolicyService_response_200"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "getMotorPolicyService_request" : {
+      "type" : "object",
+      "properties" : {
+        "LGCMAREA" : {
+          "type" : "object",
+          "properties" : {
+            "CA_REQUEST_ID" : {
+              "type" : "string",
+              "maxLength" : 6,
+              "default" : "01IMOT"
+            },
+            "CA_POLICY_REQUEST" : {
+              "type" : "object",
+              "properties" : {
+                "CA_POLICY_COMMON" : {
+                  "type" : "object",
+                  "properties" : {
+                    "policyIssueDate" : {
+                      "type" : "string",
+                      "maxLength" : 10
+                    },
+                    "policyExpirationDate" : {
+                      "type" : "string",
+                      "maxLength" : 10
+                    }
+                  }
+                },
+                "CA_MOTOR" : {
+                  "type" : "object",
+                  "properties" : {
+                    "VehicleMake" : {
+                      "type" : "string",
+                      "maxLength" : 15
+                    },
+                    "VehicleModel" : {
+                      "type" : "string",
+                      "maxLength" : 15
+                    },
+                    "VehicleRegistration" : {
+                      "type" : "string",
+                      "maxLength" : 7
+                    },
+                    "VehicleColour" : {
+                      "type" : "string",
+                      "maxLength" : 8
+                    },
+                    "InsurancePremium" : {
+                      "type" : "integer",
+                      "minimum" : 0,
+                      "maximum" : 999999
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "getMotorPolicyService_response_200" : {
+      "type" : "object",
+      "properties" : {
+        "LGCMAREA" : {
+          "type" : "object",
+          "properties" : {
+            "CA_REQUEST_ID" : {
+              "type" : "string",
+              "maxLength" : 6,
+              "default" : "01IMOT"
+            },
+            "CustomerNumber" : {
+              "type" : "integer",
+              "minimum" : 0,
+              "maximum" : 9999999999
+            },
+            "CA_POLICY_REQUEST" : {
+              "type" : "object",
+              "properties" : {
+                "PolicyNumber" : {
+                  "type" : "integer",
+                  "minimum" : 0,
+                  "maximum" : 9999999999
+                },
+                "CA_POLICY_COMMON" : {
+                  "type" : "object",
+                  "properties" : {
+                    "policyIssueDate" : {
+                      "type" : "string",
+                      "maxLength" : 10
+                    },
+                    "policyExpirationDate" : {
+                      "type" : "string",
+                      "maxLength" : 10
+                    }
+                  }
+                },
+                "CA_MOTOR" : {
+                  "type" : "object",
+                  "properties" : {
+                    "VehicleMake" : {
+                      "type" : "string",
+                      "maxLength" : 15
+                    },
+                    "VehicleModel" : {
+                      "type" : "string",
+                      "maxLength" : 15
+                    },
+                    "VehicleRegistration" : {
+                      "type" : "string",
+                      "maxLength" : 7
+                    },
+                    "VehicleColour" : {
+                      "type" : "string",
+                      "maxLength" : 8
+                    },
+                    "InsurancePremium" : {
+                      "type" : "integer",
+                      "minimum" : 0,
+                      "maximum" : 999999
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

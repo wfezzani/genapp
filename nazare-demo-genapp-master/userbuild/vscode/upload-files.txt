@@ -1,0 +1,4 @@
+f:/c/Users/Public/nazare-projects/nazare-demo-genapp/base/src/cobol/lgipol01.cbl://u/ibmuser/projects/nazare-demo-genapp/base/src/cobol/lgipol01.cbl
+f:/c/Users/Public/nazare-projects/nazare-demo-genapp/base/src/copy/LGCMAREA.cpy://u/ibmuser/projects/nazare-demo-genapp/base/src/copy/LGCMAREA.cpy
+f:/c/Users/Public/nazare-projects/nazare-demo-genapp/base/src/copy/LGPOLICY.cpy://u/ibmuser/projects/nazare-demo-genapp/base/src/copy/LGPOLICY.cpy
+d:/c/Users/Public/nazare-projects/nazare-demo-genapp/tests/zunit://u/ibmuser/projects/nazare-demo-genapp/tests/zunit

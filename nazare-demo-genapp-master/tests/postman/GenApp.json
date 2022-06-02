@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "1d16b9f2-866b-4291-90f9-bec7492e6385",
+		"name": "GenAppTestsZPrev",
+		"description": "GenApp Integration Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetPolicy001",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('expect response be 200', function () {",
+							"    pm.response.to.be.ok",
+							"})",
+							"pm.test('expect response json be valid', function () {",
+							"    pm.expect(pm.response.json().LGCMAREA).to.have.property('CustomerNumber')",
+							"      .and.equal(2)",
+							"})"
+						]
+					}
+				}
+			],			
+			"request": {
+                "auth": {
+                    "type": "basic",
+                    "basic": [
+                        {
+                            "key": "password",
+                            "value": "{{password}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "username",
+                            "value": "{{username}}",
+                            "type": "string"
+                            }
+                    ]
+                },			    
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{host}}:{{zceeport}}/genapp/motorPolicy/2/1",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{zceeport}}",
+					"path": [
+						"genapp",
+						"motorPolicy",
+						"2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPolicy001 Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('expect response be 200', function () {",
+							"    pm.response.to.be.ok",
+							"})",
+							"pm.test('expect response json be valid', function () {",
+							"    pm.expect(pm.response.json().LGCMAREA).to.have.property('CustomerNumber')",
+							"      .and.equal(2)",
+							"})"
+						]
+					}
+				}
+			],			
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{host}}:{{zceeport}}/genapp/motorPolicy/2/1",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{zceeport}}",
+					"path": [
+						"genapp",
+						"motorPolicy",
+						"2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPolicy003",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('expect response be 200', function () {",
+							"    pm.response.to.be.ok",
+							"})",
+							"pm.test('expect response json be valid', function () {",
+							"    pm.expect(pm.response.json().LGCMAREA).to.have.property('CustomerNumber')",
+							"      .and.equal(5)",
+							"})"
+						]
+					}
+				}
+			],			
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{host}}:{{zceeport}}/genapp/motorPolicy/5/3",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{zceeport}}",
+					"path": [
+						"genapp",
+						"motorPolicy",
+						"5",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPolicy003 Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('expect response be 200', function () {",
+							"    pm.response.to.be.ok",
+							"})",
+							"pm.test('expect response json be valid', function () {",
+							"    pm.expect(pm.response.json().LGCMAREA).to.have.property('CustomerNumber')",
+							"      .and.equal(5)",
+							"})"
+						]
+					}
+				}
+			],			
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{host}}:{{zceeport}}/genapp/motorPolicy/5/3",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{zceeport}}",
+					"path": [
+						"genapp",
+						"motorPolicy",
+						"5",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

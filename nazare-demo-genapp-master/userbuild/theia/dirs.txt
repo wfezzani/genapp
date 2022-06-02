@@ -1,0 +1,6 @@
+/u/ibmuser/projects/nazare-demo-genapp/base
+/u/ibmuser/projects/nazare-demo-genapp/base/src
+/u/ibmuser/projects/nazare-demo-genapp/base/src/cobol
+/u/ibmuser/projects/nazare-demo-genapp/base/src/copy
+/u/ibmuser/projects/nazare-demo-genapp/tests
+/u/ibmuser/projects/nazare-demo-genapp/tests/zunit

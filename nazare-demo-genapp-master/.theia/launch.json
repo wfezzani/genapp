@@ -1,0 +1,21 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "zDebug",
+      "request": "launch",
+      "name": "Connect to parked IBM Compiled Language Debugger session",
+      "sessionId": "*",
+      "host": "10.1.1.2",
+      "port": 8001
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - QueryTransaction",
+      "request": "launch",
+      "mainClass": "nazare.jmp.controller.QueryTransaction"
+    }
+  ]
+}
