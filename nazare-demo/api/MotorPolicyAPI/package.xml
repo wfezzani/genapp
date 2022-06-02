@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<zosConnectApi xmlns="http://www.ibm.com/zosConnect/2.0/zosConnectApi" id="motorpolicyapi">
+    <apiSpec title="motorpolicyapi" basePath="/genapp" description="" version="1.0.0">
+        <path relativePath="/motorPolicy/{customer_num}/{policy_num}">
+            <method type="GET" zosConnectServiceRef="MotorPolicyService" httpXformFile="api/motorPolicy/{customer_num}/{policy_num}/GET/mapping.xml" operationId="getMotorPolicyService"/>
+        </path>
+        <apiDoc docType="SWAGGER">api-docs/swagger.json</apiDoc>
+    </apiSpec>
+</zosConnectApi>

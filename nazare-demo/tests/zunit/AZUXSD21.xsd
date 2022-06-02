@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ /********************************************************************
+  * IBM Developer for z Systems
+  * IBM z/OS Automated Unit Testing Framework (zUnit)
+  * AZUXSD20.xsd
+  *
+  * XML Schema that defines the zUnit test runner 2.1.0.0 input  
+  * RunnerConfiguration and output RunnerResults XML instance
+  * document formats.  
+  *
+  * @since   9.0.0.0
+  * @version 14.1.0.0
+  ********************************************************************/
+-->
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/zUnit/2.1.0.0/TestRunner"
+  xmlns:p0="http://www.ibm.com/zUnit/2.1.0.0/TestRunner" elementFormDefault="qualified">
+  
+  <!-- zUnit test runner configuration format -->
+  <element name="RunnerConfiguration"  type="p0:RunnerConfiguration_Type" />
+  
+  <!-- zUnit test runner results format -->
+  <element name="RunnerResult" type="p0:RunnerResult_Type" />
+    
+  <complexType name="RunnerConfiguration_Type">
+    <sequence>
+      <!-- Specify zUnit test runner options -->
+      <element name="options"  type="p0:RunnerOptions_Type" 
+               minOccurs="0" maxOccurs="1" />
+      <!-- Specify a list of zUnit test cases -->
+      <element name="testCase" type="p0:TestCaseConfig_Type" 
+               minOccurs="1" maxOccurs="unbounded" />
+    </sequence>
+    <!-- Uniquely identify this runner configuration instance and
+         the corresponding runner result. -->
+    <attribute name="id" type="string" 
+               use="optional" />
+  </complexType>
+  
+  <complexType name="RunnerResult_Type">
+    <sequence>
+      <!-- zUnit test runner options in effect -->
+      <element name="options" type="p0:RunnerOptions_Type" 
+               minOccurs="1" maxOccurs="1" />
+      <!-- Execution-order list of test case results -->
+      <element name="testCase" type="p0:TestCaseResult_Type"
+               minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <!-- Uniquely identify this runner result instance. 
+         The value of this attribute is normally set to
+         the value of attribute RunnerConfiguration/@id 
+         by the test runner. -->
+    <attribute name="id" type="string" 
+               use="optional" />
+    <!-- Total number of tests that were run across all
+         test cases -->    
+    <attribute name="tests" type="int" 
+               use="required"/>
+    <!-- Number of tests that have a result of "pass" -->                   
+    <attribute name="passed" type="int" 
+               use="required"/>
+    <!-- Number of tests that have a result of "fail" -->                   
+    <attribute name="failures" type="int" 
+               use="required"/>
+    <!-- Number of tests that have a result of "error" -->                   
+    <attribute name="errors" type="int" 
+               use="required"/>                   
+  </complexType>
+      
+  <complexType name="RunnerOptions_Type">
+    <!-- Indicate whether or not the test runner should 
+         continue and execute the next test case if the
+         the current test case has failed because at 
+         least one of its tests was failed by the
+         programmer using either the AZUASTFM or 
+         AZUASTFA API. --> 
+    <attribute name="contOnTestCaseFail" type="boolean"
+               default="true" use="optional" />
+    <!-- Indicate whether or not the test runner should 
+         continue and execute the next test case if 
+         the current test case has failed because at
+         least one of its tests caused an unexpected
+         Language Environment exception to be thrown. --> 
+    <attribute name="contOnTestCaseError" type="boolean"
+               default="false" use="optional" />
+    <!-- Indicate whether or not the test runner should 
+         continue and execute the next test in the 
+         current test case if the current test has   
+         been failed by the programmer using either
+         the AZUASTFM or AZUASTFA API. --> 
+    <attribute name="contOnTestFail" type="boolean"
+               default="true" use="optional" />
+    <!-- Indicate whether or not the test runner should 
+         continue and execute the next test in the 
+         current test case if the current test has
+         caused an unexpected Language Environment
+         exception to be thrown. --> 
+    <attribute name="contOnTestError" type="boolean"
+               default="false" use="optional" />
+  </complexType>
+  
+  <complexType name="TestCaseConfig_Type">
+    <sequence>
+      <!-- List of tests -->
+      <element name="test"  type="p0:TestConfig_Type" 
+               minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+    <!-- Specify the name of the load module (executable)
+         that implements the test case. The load module
+         will be located using the standard z/OS search 
+         order for programs (e.g., STEPLIB, LINKLIB). -->        
+    <attribute name="moduleName" type="p0:ModuleName_Type" 
+               use="required"/>
+  </complexType>
+
+  <complexType name="TestConfig_Type">
+    <!-- Indicate whether or not the test runner perform 
+         run/debug the test. -->        
+    <attribute name="skipTest" type="boolean" 
+               default="false"/>
+    <attribute name="name" type="string" 
+               use="required"/>
+  </complexType>
+  
+  <complexType name="TestCaseResult_Type">
+    <sequence>  
+      <!-- List of test results for the test case -->               
+      <element name="test" type="p0:TestResult_Type" 
+               minOccurs="0" maxOccurs="unbounded" />
+      <element name="testExt" type="p0:TestResultExt_Type" 
+               minOccurs="0" maxOccurs="unbounded" />
+      <element name="ftest" type="p0:FileTestResult_Type"
+               maxOccurs="unbounded" minOccurs="0"/>
+      <element name="ftestExt" type="p0:FileTestResultExt_Type"
+               maxOccurs="unbounded" minOccurs="0"/>
+      <!-- If an exception is encountered before the test runner
+           begins executing tests in the the test case, the details
+           of the exception are provided using one of the following
+           elements -->
+      <element name="failure" type="p0:Exception_Type"
+               minOccurs="0" maxOccurs="1" />
+      <element name="error" type="p0:Exception_Type"
+               minOccurs="0" maxOccurs="1" />   
+    </sequence>
+    <!-- Unique identifier for this test case. The value of this
+         attribute is normally supplied by the test case. -->
+    <attribute name="id" type="string"
+               use="optional" />
+    <!-- The name of the test case's load module  -->     
+    <attribute name="moduleName" type="p0:ModuleName_Type" 
+               use="required"/>
+    <!-- The test case name supplied by the test case -->
+    <attribute name="name" type="string" 
+               use="required" />
+    <!-- The time at which the test runner began
+         executing the test case. --> 
+    <attribute name="startTimestamp" type="dateTime" 
+               use="required" />
+    <!-- The time at which the test runner finished
+         executing the test case --> 
+    <attribute name="endTimestamp" type="dateTime" 
+               use="required" />
+    <!-- The estimated elapsed execution time in seconds and
+         milliseconds for this test case. --> 
+    <attribute name="elapsedTime" type="decimal" 
+               use="required" />                       
+    <!-- The number of tests that were added the test case -->
+    <attribute name="tests" type="int" 
+               use="required" />
+    <!-- Number of tests that have a result of "pass" -->                   
+    <attribute name="passed" type="int" 
+               use="required"/>
+    <!-- Number of tests that have a result of "fail" -->                   
+    <attribute name="failures" type="int" 
+               use="required"/>
+    <!-- Number of tests that have a result of "error" -->                   
+    <attribute name="errors" type="int" 
+               use="required"/>
+    <!-- The result of this test case: "pass", "fail", or "error" 
+         "pass" : The test case passed because none of its
+                  test had a result of "fail" or "error".
+         "fail" : The test case failed because at least one
+                  of its tests had a result of "fail" or "error".
+         "error": The test failed because an unexpected exception
+                  occurred while initializing the test case. -->
+    <attribute name="result" type="p0:ResultKind_Type"
+               use="required" />
+  </complexType>  
+
+  <complexType name="TestResult_Type">
+    <sequence>      
+      <!-- If result of this test is "fail" or "error", the details
+           of the exception are provided using one of the following
+           elements -->
+       <element name="failure" type="p0:Exception_Type"
+                minOccurs="0" maxOccurs="1" />
+       <element name="error" type="p0:Exception_Type"
+                minOccurs="0" maxOccurs="1" />   
+    </sequence>
+    <!-- The name assigned to this test by the test case --> 
+    <attribute name="name" type="string" 
+               use="required" />
+    <!-- The time at which the test runner began 
+         executing this test --> 
+    <attribute name="startTimestamp" type="dateTime" 
+               use="required" />
+    <!-- The time at which the test runner finished 
+         executing this test --> 
+    <attribute name="endTimestamp" type="dateTime" 
+               use="required" />
+    <!-- The estimated elapsed execution time in seconds and
+         milliseconds for this test. --> 
+    <attribute name="elapsedTime" type="decimal" 
+               use="required" />                       
+    <!-- The result of this test: "pass", "fail", or "error" 
+         "pass" : The test passed
+         "fail" : The test failed due to an assertion 
+         "error": The test failed due to an exception -->
+    <attribute name="result" type="p0:ResultKind_Type"
+               use="required" />
+  </complexType>
+  
+  <complexType name="TestResultExt_Type">
+    <sequence>      
+      <!-- If result of this test is "fail" or "error", the details
+           of the exception are provided using one of the following
+           elements -->
+       <element name="failure" type="p0:Exception_Type"
+                minOccurs="0" maxOccurs="1" />
+       <element name="error" type="p0:Exception_Type"
+                minOccurs="0" maxOccurs="1" />   
+    </sequence>
+    <!-- The name assigned to this test by the test case --> 
+    <attribute name="name" type="string" 
+               use="required" />
+    <!-- The time at which the test runner began 
+         executing this test --> 
+    <attribute name="startTimestamp" type="dateTime" 
+               use="required" />
+    <!-- The time at which the test runner finished 
+         executing this test --> 
+    <attribute name="endTimestamp" type="dateTime" 
+               use="required" />
+    <!-- The estimated elapsed execution time in seconds and
+         milliseconds for this test. --> 
+    <attribute name="elapsedTime" type="decimal" 
+               use="required" />                       
+    <!-- The result of this test: "pass", "fail", or "error" 
+         "pass" : The test passed
+         "fail" : The test failed due to an assertion 
+         "error": The test failed due to an exception -->
+    <attribute name="result" type="p0:ResultKind_Type"
+               use="required" />
+    <!-- The data item name -->               
+    <attribute name="itemName" type="string"
+               use="optional" />
+    <!-- The value -->               
+    <attribute name="value" type="string"
+               use="optional" />
+    <!-- The expected value -->
+    <attribute name="expectedValue" type="string"
+               use="optional" />
+    <!-- The description -->
+    <attribute name="description" type="string"
+               use="optional" />
+  </complexType>
+  
+  <complexType name="FileTestResult_Type">
+    <sequence>
+      <!-- If result of this test is "fail" or "error", the details
+           of the exception are provided using one of the following
+           elements -->
+      <element name="failure" type="p0:Exception_Type"
+                minOccurs="0" maxOccurs="1" />    
+      <element name="error" type="p0:Exception_Type"
+                minOccurs="0" maxOccurs="1" />    
+    </sequence>
+    <!-- The name assigned to this test by the test case --> 
+    <attribute name="name" type="string" 
+               use="required" />
+    <!-- The time at which the test runner began 
+         executing this test --> 
+    <attribute name="startTimestamp" type="dateTime" 
+               use="required" />
+    <!-- The time at which the test runner finished 
+         executing this test --> 
+    <attribute name="endTimestamp" type="dateTime" 
+               use="required" />
+    <!-- The estimated elapsed execution time in seconds and
+         milliseconds for this test. --> 
+    <attribute name="elapsedTime" type="decimal" 
+               use="required" />                       
+    <!-- The result of this test: "pass", "fail", or "error" 
+         "pass" : The test passed
+         "fail" : The test failed due to an assertion 
+         "error": The test failed due to an exception -->
+    <attribute name="result" type="p0:ResultKind_Type"
+               use="required" />
+    <!-- The name of compare result file of SuperC --> 
+    <attribute name="supercResult" type="string"
+               use="required"/>
+  </complexType>
+  
+  <complexType name="FileTestResultExt_Type">
+    <sequence>
+      <!-- If result of this test is "fail" or "error", the details
+           of the exception are provided using one of the following
+           elements -->
+      <element name="failure" type="p0:Exception_Type"
+                minOccurs="0" maxOccurs="1" />    
+      <element name="error" type="p0:Exception_Type"
+                minOccurs="0" maxOccurs="1" />    
+    </sequence>
+    <!-- The name assigned to this test by the test case --> 
+    <attribute name="name" type="string" 
+               use="required" />
+    <!-- The time at which the test runner began 
+         executing this test --> 
+    <attribute name="startTimestamp" type="dateTime" 
+               use="required" />
+    <!-- The time at which the test runner finished 
+         executing this test --> 
+    <attribute name="endTimestamp" type="dateTime" 
+               use="required" />
+    <!-- The estimated elapsed execution time in seconds and
+         milliseconds for this test. --> 
+    <attribute name="elapsedTime" type="decimal" 
+               use="required" />                       
+    <!-- The result of this test: "pass", "fail", or "error" 
+         "pass" : The test passed
+         "fail" : The test failed due to an assertion 
+         "error": The test failed due to an exception -->
+    <attribute name="result" type="p0:ResultKind_Type"
+               use="required" />
+    <!-- The name of compare result file of SuperC --> 
+    <attribute name="supercResult" type="string"
+               use="required"/>
+    <!-- The data item name -->               
+    <attribute name="itemName" type="string"
+               use="optional" />
+    <!-- The value -->               
+    <attribute name="value" type="string"
+               use="optional" />
+    <!-- The expected value -->
+    <attribute name="expectedValue" type="string"
+               use="optional" />
+    <!-- The description -->
+    <attribute name="description" type="string"
+               use="optional" />
+  </complexType>
+  
+  <complexType name="Exception_Type">
+    <sequence>
+      <!-- Any available traceback information associated
+           with the exception is provided using instances
+           of this element. -->
+      <element name="traceback" type="p0:Traceback_Type"
+               minOccurs="0" maxOccurs="unbounded" />                                   
+    </sequence>
+    <!-- The exception component prefix -->     
+    <attribute name="componentCode" type="string" 
+               use="optional" />
+    <!-- The exception message number -->               
+    <attribute name="messageNumber" type="int" 
+               use="optional" />
+    <!-- The exception message severity -->               
+    <attribute name="messageSeverity" type="int" 
+               use="optional" />
+    <!-- The exception message -->               
+    <attribute name="message" type="string" 
+               use="optional" />
+  </complexType>  
+  
+  <complexType name="Traceback_Type">
+    <!-- Name of the program unit. This may differ from the
+         entry point name --> 
+    <attribute name="programUnitName" type="string"
+               use="optional" />
+    <!-- Name of the entry point. This may differ from the
+         program unit name --> 
+    <attribute name="entryName" type="string"
+               use="optional" />
+    <!-- Line number of the statement that caused the transfer
+         out of the program unit or entry point (this is only 
+         available when debugging information is present in 
+         the program unit or entry point object code) --> 
+    <attribute name="statementID" type="string"
+               use="optional" />
+  </complexType>
+  
+  <simpleType name="ResultKind_Type">
+    <restriction base="string">
+      <enumeration value="pass"  />
+      <enumeration value="fail"  />
+      <enumeration value="error" />
+    </restriction>
+  </simpleType>
+  
+  <simpleType name="ModuleName_Type">
+    <restriction base="string">
+      <pattern value="[a-zA-Z$#@][a-zA-Z0-9$#@]{0,7}"/>
+      <minLength value="1"/>    
+      <maxLength value="8"/>    
+    </restriction>
+  </simpleType>  
+</schema>

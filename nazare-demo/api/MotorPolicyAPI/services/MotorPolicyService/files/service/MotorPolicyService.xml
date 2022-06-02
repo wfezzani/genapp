@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns:ns2="http://www.ibm.com/ims/Transaction">
+    <shallow>true</shallow>
+    <serviceName>MotorPolicyService</serviceName>
+    <serviceType>ims-rest</serviceType>
+    <resourceType>TRAN</resourceType>
+    <status>1</status>
+    <conversionType>3</conversionType>
+    <dataProtocol>0</dataProtocol>
+    <serviceInputInterface>
+        <metadataName>in.si</metadataName>
+        <serviceInterface>
+            <interface>
+                <segment segmentName="COMMAREA">
+                    <interfaceField included="Y" fieldName="LGCMAREA">
+                        <field included="Y" fieldName="CA_REQUEST_ID" defaultValue="01IMOT" isHex="false"/>
+                        <field included="N" fieldName="CA_RETURN_CODE"/>
+                        <field included="Y" fieldName="CustomerNumber" isHex="false"/>
+                        <field included="N" fieldName="CA_REQUEST_SPECIFIC"/>
+                        <field included="N" fieldName="CA_CUSTOMER_REQUEST">
+                            <field included="N" fieldName="CA_FIRST_NAME"/>
+                            <field included="N" fieldName="CA_LAST_NAME"/>
+                            <field included="N" fieldName="CA_DOB"/>
+                            <field included="N" fieldName="CA_HOUSE_NAME"/>
+                            <field included="N" fieldName="CA_HOUSE_NUM"/>
+                            <field included="N" fieldName="CA_POSTCODE"/>
+                            <field included="N" fieldName="CA_NUM_POLICIES"/>
+                            <field included="N" fieldName="CA_PHONE_MOBILE"/>
+                            <field included="N" fieldName="CA_PHONE_HOME"/>
+                            <field included="N" fieldName="CA_EMAIL_ADDRESS"/>
+                            <field included="N" fieldName="CA_POLICY_DATA"/>
+                        </field>
+                        <field included="N" fieldName="CA_CUSTSECR_REQUEST">
+                            <field included="N" fieldName="CA_CUSTSECR_PASS"/>
+                            <field included="N" fieldName="CA_CUSTSECR_COUNT"/>
+                            <field included="N" fieldName="CA_CUSTSECR_STATE"/>
+                            <field included="N" fieldName="CA_CUSTSECR_DATA"/>
+                        </field>
+                        <field included="Y" fieldName="CA_POLICY_REQUEST">
+                            <field included="Y" fieldName="PolicyNumber" isHex="false"/>
+                            <field included="Y" fieldName="CA_POLICY_COMMON">
+<field included="Y" fieldName="policyIssueDate" isHex="false"/>
+<field included="Y" fieldName="policyExpirationDate" isHex="false"/>
+<field included="N" fieldName="CA_LASTCHANGED"/>
+<field included="N" fieldName="CA_BROKERID"/>
+<field included="N" fieldName="CA_BROKERSREF"/>
+<field included="N" fieldName="CA_PAYMENT"/>
+                            </field>
+                            <field included="N" fieldName="CA_POLICY_SPECIFIC"/>
+                            <field included="N" fieldName="CA_ENDOWMENT">
+<field included="N" fieldName="CA_E_WITH_PROFITS"/>
+<field included="N" fieldName="CA_E_EQUITIES"/>
+<field included="N" fieldName="CA_E_MANAGED_FUND"/>
+<field included="N" fieldName="CA_E_FUND_NAME"/>
+<field included="N" fieldName="CA_E_TERM"/>
+<field included="N" fieldName="CA_E_SUM_ASSURED"/>
+<field included="N" fieldName="CA_E_LIFE_ASSURED"/>
+<field included="N" fieldName="CA_E_PADDING_DATA"/>
+                            </field>
+                            <field included="N" fieldName="CA_HOUSE">
+<field included="N" fieldName="CA_H_PROPERTY_TYPE"/>
+<field included="N" fieldName="CA_H_BEDROOMS"/>
+<field included="N" fieldName="CA_H_VALUE"/>
+<field included="N" fieldName="CA_H_HOUSE_NAME"/>
+<field included="N" fieldName="CA_H_HOUSE_NUMBER"/>
+<field included="N" fieldName="CA_H_POSTCODE"/>
+<field included="N" fieldName="CA_H_FILLER"/>
+                            </field>
+                            <field included="Y" fieldName="CA_MOTOR">
+<field included="Y" fieldName="VehicleMake" isHex="false"/>
+<field included="Y" fieldName="VehicleModel" isHex="false"/>
+<field included="N" fieldName="CA_M_VALUE"/>
+<field included="Y" fieldName="VehicleRegistration" isHex="false"/>
+<field included="Y" fieldName="VehicleColour" isHex="false"/>
+<field included="N" fieldName="CA_M_CC"/>
+<field included="N" fieldName="CA_M_MANUFACTURED"/>
+<field included="Y" fieldName="InsurancePremium" isHex="false"/>
+<field included="N" fieldName="CA_M_ACCIDENTS"/>
+<field included="N" fieldName="CA_M_FILLER"/>
+                            </field>
+                            <field included="N" fieldName="CA_COMMERCIAL">
+<field included="N" fieldName="CA_B_ADDRESS"/>
+<field included="N" fieldName="CA_B_POSTCODE"/>
+<field included="N" fieldName="CA_B_LATITUDE"/>
+<field included="N" fieldName="CA_B_LONGITUDE"/>
+<field included="N" fieldName="CA_B_CUSTOMER"/>
+<field included="N" fieldName="CA_B_PROPTYPE"/>
+<field included="N" fieldName="CA_B_FIREPERIL"/>
+<field included="N" fieldName="CA_B_FIREPREMIUM"/>
+<field included="N" fieldName="CA_B_CRIMEPERIL"/>
+<field included="N" fieldName="CA_B_CRIMEPREMIUM"/>
+<field included="N" fieldName="CA_B_FLOODPERIL"/>
+<field included="N" fieldName="CA_B_FLOODPREMIUM"/>
+<field included="N" fieldName="CA_B_WEATHERPERIL"/>
+<field included="N" fieldName="CA_B_WEATHERPREMIUM"/>
+<field included="N" fieldName="CA_B_STATUS"/>
+<field included="N" fieldName="CA_B_REJECTREASON"/>
+<field included="N" fieldName="CA_B_FILLER"/>
+                            </field>
+                            <field included="N" fieldName="CA_CLAIM">
+<field included="N" fieldName="CA_C_NUM"/>
+<field included="N" fieldName="CA_C_DATE"/>
+<field included="N" fieldName="CA_C_PAID"/>
+<field included="N" fieldName="CA_C_VALUE"/>
+<field included="N" fieldName="CA_C_CAUSE"/>
+<field included="N" fieldName="CA_C_OBSERVATIONS"/>
+<field included="N" fieldName="CA_C_FILLER"/>
+                            </field>
+                        </field>
+                    </interfaceField>
+                </segment>
+            </interface>
+        </serviceInterface>
+        <version>0</version>
+    </serviceInputInterface>
+    <serviceOutputInterface>
+        <metadataName>in.si</metadataName>
+        <serviceInterface>
+            <interface>
+                <segment segmentName="COMMAREA">
+                    <interfaceField included="Y" fieldName="LGCMAREA">
+                        <field included="Y" fieldName="CA_REQUEST_ID" defaultValue="01IMOT" isHex="false"/>
+                        <field included="N" fieldName="CA_RETURN_CODE"/>
+                        <field included="Y" fieldName="CustomerNumber" isHex="false"/>
+                        <field included="N" fieldName="CA_REQUEST_SPECIFIC"/>
+                        <field included="N" fieldName="CA_CUSTOMER_REQUEST">
+                            <field included="N" fieldName="CA_FIRST_NAME"/>
+                            <field included="N" fieldName="CA_LAST_NAME"/>
+                            <field included="N" fieldName="CA_DOB"/>
+                            <field included="N" fieldName="CA_HOUSE_NAME"/>
+                            <field included="N" fieldName="CA_HOUSE_NUM"/>
+                            <field included="N" fieldName="CA_POSTCODE"/>
+                            <field included="N" fieldName="CA_NUM_POLICIES"/>
+                            <field included="N" fieldName="CA_PHONE_MOBILE"/>
+                            <field included="N" fieldName="CA_PHONE_HOME"/>
+                            <field included="N" fieldName="CA_EMAIL_ADDRESS"/>
+                            <field included="N" fieldName="CA_POLICY_DATA"/>
+                        </field>
+                        <field included="N" fieldName="CA_CUSTSECR_REQUEST">
+                            <field included="N" fieldName="CA_CUSTSECR_PASS"/>
+                            <field included="N" fieldName="CA_CUSTSECR_COUNT"/>
+                            <field included="N" fieldName="CA_CUSTSECR_STATE"/>
+                            <field included="N" fieldName="CA_CUSTSECR_DATA"/>
+                        </field>
+                        <field included="Y" fieldName="CA_POLICY_REQUEST">
+                            <field included="Y" fieldName="PolicyNumber" isHex="false"/>
+                            <field included="Y" fieldName="CA_POLICY_COMMON">
+<field included="Y" fieldName="policyIssueDate" isHex="false"/>
+<field included="Y" fieldName="policyExpirationDate" isHex="false"/>
+<field included="N" fieldName="CA_LASTCHANGED"/>
+<field included="N" fieldName="CA_BROKERID"/>
+<field included="N" fieldName="CA_BROKERSREF"/>
+<field included="N" fieldName="CA_PAYMENT"/>
+                            </field>
+                            <field included="N" fieldName="CA_POLICY_SPECIFIC"/>
+                            <field included="N" fieldName="CA_ENDOWMENT">
+<field included="N" fieldName="CA_E_WITH_PROFITS"/>
+<field included="N" fieldName="CA_E_EQUITIES"/>
+<field included="N" fieldName="CA_E_MANAGED_FUND"/>
+<field included="N" fieldName="CA_E_FUND_NAME"/>
+<field included="N" fieldName="CA_E_TERM"/>
+<field included="N" fieldName="CA_E_SUM_ASSURED"/>
+<field included="N" fieldName="CA_E_LIFE_ASSURED"/>
+<field included="N" fieldName="CA_E_PADDING_DATA"/>
+                            </field>
+                            <field included="N" fieldName="CA_HOUSE">
+<field included="N" fieldName="CA_H_PROPERTY_TYPE"/>
+<field included="N" fieldName="CA_H_BEDROOMS"/>
+<field included="N" fieldName="CA_H_VALUE"/>
+<field included="N" fieldName="CA_H_HOUSE_NAME"/>
+<field included="N" fieldName="CA_H_HOUSE_NUMBER"/>
+<field included="N" fieldName="CA_H_POSTCODE"/>
+<field included="N" fieldName="CA_H_FILLER"/>
+                            </field>
+                            <field included="Y" fieldName="CA_MOTOR">
+<field included="Y" fieldName="VehicleMake" isHex="false"/>
+<field included="Y" fieldName="VehicleModel" isHex="false"/>
+<field included="N" fieldName="CA_M_VALUE"/>
+<field included="Y" fieldName="VehicleRegistration" isHex="false"/>
+<field included="Y" fieldName="VehicleColour" isHex="false"/>
+<field included="N" fieldName="CA_M_CC"/>
+<field included="N" fieldName="CA_M_MANUFACTURED"/>
+<field included="Y" fieldName="InsurancePremium" isHex="false"/>
+<field included="N" fieldName="CA_M_ACCIDENTS"/>
+<field included="N" fieldName="CA_M_FILLER"/>
+                            </field>
+                            <field included="N" fieldName="CA_COMMERCIAL">
+<field included="N" fieldName="CA_B_ADDRESS"/>
+<field included="N" fieldName="CA_B_POSTCODE"/>
+<field included="N" fieldName="CA_B_LATITUDE"/>
+<field included="N" fieldName="CA_B_LONGITUDE"/>
+<field included="N" fieldName="CA_B_CUSTOMER"/>
+<field included="N" fieldName="CA_B_PROPTYPE"/>
+<field included="N" fieldName="CA_B_FIREPERIL"/>
+<field included="N" fieldName="CA_B_FIREPREMIUM"/>
+<field included="N" fieldName="CA_B_CRIMEPERIL"/>
+<field included="N" fieldName="CA_B_CRIMEPREMIUM"/>
+<field included="N" fieldName="CA_B_FLOODPERIL"/>
+<field included="N" fieldName="CA_B_FLOODPREMIUM"/>
+<field included="N" fieldName="CA_B_WEATHERPERIL"/>
+<field included="N" fieldName="CA_B_WEATHERPREMIUM"/>
+<field included="N" fieldName="CA_B_STATUS"/>
+<field included="N" fieldName="CA_B_REJECTREASON"/>
+<field included="N" fieldName="CA_B_FILLER"/>
+                            </field>
+                            <field included="N" fieldName="CA_CLAIM">
+<field included="N" fieldName="CA_C_NUM"/>
+<field included="N" fieldName="CA_C_DATE"/>
+<field included="N" fieldName="CA_C_PAID"/>
+<field included="N" fieldName="CA_C_VALUE"/>
+<field included="N" fieldName="CA_C_CAUSE"/>
+<field included="N" fieldName="CA_C_OBSERVATIONS"/>
+<field included="N" fieldName="CA_C_FILLER"/>
+                            </field>
+                        </field>
+                    </interfaceField>
+                </segment>
+            </interface>
+        </serviceInterface>
+        <version>0</version>
+    </serviceOutputInterface>
+    <applicationDataStructureType>Block</applicationDataStructureType>
+    <messageVisitorRuntimeType>CICS_COMMAREA</messageVisitorRuntimeType>
+    <ccsid>IBM037</ccsid>
+    <totalExecCount>0</totalExecCount>
+    <failedCount>0</failedCount>
+    <trancodeOverride>LGIPOL01</trancodeOverride>
+    <trimOutputLeadingWhitespace>false</trimOutputLeadingWhitespace>
+    <trimOutputTrailingWhitespace>true</trimOutputTrailingWhitespace>
+    <escapeOutputControlCharacters>false</escapeOutputControlCharacters>
+    <initializeInputFields>false</initializeInputFields>
+    <omitOutputFieldsByValue>false</omitOutputFieldsByValue>
+    <omitOutputFieldsByValueByte>0x00</omitOutputFieldsByValueByte>
+    <omitOutputEmptyTags>false</omitOutputEmptyTags>
+    <enforceMinArrayOccurrence>false</enforceMinArrayOccurrence>
+</service>
