@@ -1,2 +1,0 @@
-# nazare-demo-genapp
-

@@ -1,4 +1,0 @@
-       DFHNCO   POOLSEL=D*,POOL=YES
-       DFHNCO   POOL=GENA
-       END      DFHNCOPT
-
